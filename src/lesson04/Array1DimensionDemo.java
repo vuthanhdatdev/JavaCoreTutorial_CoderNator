@@ -7,17 +7,18 @@ package lesson04;
 
 import java.util.Random;
 import javax.swing.JOptionPane;
-
+import java.util.Arrays;
+import java.util.List;
 /**
  *
  * @author Thanh Dat
  */
-public class OneDimensionArray extends javax.swing.JFrame {
+public class Array1DimensionDemo extends javax.swing.JFrame {
 
     /**
-     * Creates new form OneDimensionArray
+     * Creates new form Array1DimensionDemo
      */
-    public OneDimensionArray() {
+    public Array1DimensionDemo() {
         initComponents();
     }
 
@@ -30,34 +31,35 @@ public class OneDimensionArray extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         txtLimit = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArray = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JTextField();
-        btnCalculate = new javax.swing.JButton();
+        txtSum = new javax.swing.JTextField();
+        txtCalculate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Limit:");
+        jLabel1.setText("Giới hạn mảng:");
 
         txtArray.setColumns(20);
         txtArray.setLineWrap(true);
         txtArray.setRows(5);
+        txtArray.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtArray);
 
-        jLabel2.setText("Array:");
+        jLabel2.setText("Mảng phát sinh:");
 
-        jLabel3.setText("Total:");
+        jLabel3.setText("Tổng:");
 
-        txtTotal.setEditable(false);
+        txtSum.setEditable(false);
 
-        btnCalculate.setText("Calculate");
-        btnCalculate.addActionListener(new java.awt.event.ActionListener() {
+        txtCalculate.setText("Calculate Summary");
+        txtCalculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalculateActionPerformed(evt);
+                txtCalculateActionPerformed(evt);
             }
         });
 
@@ -66,74 +68,67 @@ public class OneDimensionArray extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLimit, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCalculate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTotal))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                            .addComponent(txtLimit, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSum, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCalculate))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnCalculate)
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addComponent(txtSum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(txtCalculate)
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
+    private void txtCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCalculateActionPerformed
         // TODO add your handling code here:
-        String arrString = "";
         int n=0,sum=0;
-        
+        String arrayAsString="";
         try{
             n = Integer.parseInt(txtLimit.getText());
         }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(rootPane, "Number Format Error, Please try again " + ex.getMessage());
+            ex.printStackTrace();
             return;
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(rootPane, "Bug: " + ex.getMessage());
         }
         
-        //TODO: Process Array
+        //TODO: Tạo mảng ngẫu nhiên 
         Random r = new Random();
         int[] arr = new int[n];
         for(int i=0;i<n;i++){
-            arr[i] = r.nextInt(100);
-            arrString += arr[i] + ", ";
-            sum= sum + arr[i];
+            arr[i] = r.nextInt(10);
+            //arrayAsString += arr[i] + " ";
+            sum = sum + arr[i];
         }
-        
-        //Set Text for component 
-        txtArray.setText(arrString);
-        txtTotal.setText(String.valueOf(sum));
-    }//GEN-LAST:event_btnCalculateActionPerformed
+        List list = Arrays.asList(arr);
+        txtArray.setText(list.toString());
+        txtSum.setText(String.valueOf(sum));
+    }//GEN-LAST:event_txtCalculateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,32 +147,32 @@ public class OneDimensionArray extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OneDimensionArray.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Array1DimensionDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OneDimensionArray.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Array1DimensionDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OneDimensionArray.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Array1DimensionDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OneDimensionArray.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Array1DimensionDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OneDimensionArray().setVisible(true);
+                new Array1DimensionDemo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCalculate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtArray;
+    private javax.swing.JButton txtCalculate;
     private javax.swing.JTextField txtLimit;
-    private javax.swing.JTextField txtTotal;
+    private javax.swing.JTextField txtSum;
     // End of variables declaration//GEN-END:variables
 }
