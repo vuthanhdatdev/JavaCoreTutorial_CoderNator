@@ -1,5 +1,6 @@
+cls clear
 SET /P message="Enter message: "
-git add -a
+git add .
 git commit -am "%message%"
 git push origin master
 echo "Done! Press Enter..."
